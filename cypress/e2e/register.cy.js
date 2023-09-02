@@ -7,15 +7,15 @@ describe('stock register', () => {
     cy.url().should("include", "/register");
     cy.get("[data-test='registerHeader']").contains("Register")
     cy.get("[data-test='userName']")
-      .should("be.visible").type("mor")
+      .should("be.visible").type("morve")
     cy.get("[data-test='firstName']")
-      .should("be.visible").type("ve")
+      .should("be.visible").type("ayrica")
     cy.get("[data-test='lastName']")
       .should("be.visible").type("otesi")
     cy.get("[data-test='email']")
-      .should("be.visible").type("mo@gmail.com")
+      .should("be.visible").type("mo3@gmail.com")
     cy.get('[data-test="password"]')
-      .should("be.visible").type("123456mO!")
+      .should("be.visible").type("123456mO?")
     cy.get("[data-test='sbmtRegister']")
       .should("be.visible").click({ force: true });
     cy.url().should("include", "/stock");
