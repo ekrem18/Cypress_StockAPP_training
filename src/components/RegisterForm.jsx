@@ -1,9 +1,8 @@
-import Box from "@mui/material/Box"
-import Button from "@mui/material/Button"
-import TextField from "@mui/material/TextField"
-import { Form } from "formik"
-import { object, string } from "yup"
-
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import { Form } from "formik";
+import { object, string } from "yup";
 export const registerSchema = object({
   username: string()
     .max(20, "Kullanıcı adı 10 karakterden az olmalıdır.")
@@ -14,7 +13,6 @@ export const registerSchema = object({
   last_name: string()
     .max(20, "Soyisim 30 karakterden az olmalıdır.")
     .required("last_name zorunludur"),
-
   email: string().email().required("Email zorunludur"),
   password: string()
     .required("password zorunludur")
@@ -24,8 +22,7 @@ export const registerSchema = object({
     .matches(/[a-z]/, "Password bir küçük harf içermelidir")
     .matches(/[A-Z]/, "Password bir büyük harf içermelidir")
     .matches(/[!,?{}><%&$#£+-.]+/, "Password bir özel karakter içermelidir"),
-})
-
+});
 const RegisterForm = ({
   values,
   handleChange,
@@ -38,6 +35,7 @@ const RegisterForm = ({
       <Form>
         <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
           <TextField
+            data-test="userName"
             label="User Name"
             name="username"
             id="userName"
@@ -50,6 +48,7 @@ const RegisterForm = ({
             helperText={errors.username}
           />
           <TextField
+            data-test="firstName"
             label="First Name"
             name="first_name"
             id="firstName"
@@ -62,6 +61,7 @@ const RegisterForm = ({
             helperText={errors.first_name}
           />
           <TextField
+            data-test="lastName"
             label="Last Name"
             name="last_name"
             id="last_name"
@@ -74,6 +74,7 @@ const RegisterForm = ({
             helperText={errors.last_name}
           />
           <TextField
+            data-test="email"
             label="Email"
             name="email"
             id="email"
@@ -86,6 +87,7 @@ const RegisterForm = ({
             helperText={errors.email}
           />
           <TextField
+            data-test="password"
             label="password"
             name="password"
             id="password"
@@ -97,13 +99,17 @@ const RegisterForm = ({
             error={touched.password && Boolean(errors.password)}
             helperText={errors.password}
           />
-          <Button type="submit" variant="contained" size="large">
+          <Button
+            data-test="sbmtRegister"
+            type="submit"
+            variant="contained"
+            size="large"
+          >
             Submit
           </Button>
         </Box>
       </Form>
     </div>
-  )
-}
-
-export default RegisterForm
+  );
+};
+export default RegisterForm;
